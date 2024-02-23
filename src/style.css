@@ -1,0 +1,36 @@
+body {
+  background-color: grey;
+}
+
+#test {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.person {
+  border: 10px black solid;
+  margin: 30px;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#title {
+  text-align: center;
+  font-family: monospace;
+  font-size: 50px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#add {
+  padding: 20px 20px;
+  font-family: monospace;
+  text-align: center;
+  margin: 20px auto;
+  display: flex;
+}
