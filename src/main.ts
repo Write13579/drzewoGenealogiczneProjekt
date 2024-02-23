@@ -3,7 +3,7 @@ enum PersonMode {
   VIEW = `WIDOK`,
 }
 
-let DATA_BASE: {
+const DATA_BASE: {
   firstName: string;
   lastName: string;
   age: number;
