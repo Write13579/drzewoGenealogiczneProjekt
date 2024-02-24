@@ -1,4 +1,4 @@
-enum PersonMode {
+enum PersonMode { //to jest typ ale tez wartosc xd
   EDITING = `EDIT`,
   VIEW = `WIDOK`,
 }
@@ -10,7 +10,19 @@ const DATA_BASE: {
   mode: PersonMode;
 }[] = [];
 
-const mainElements = document.getElementById(`alles`)!;
+const mainElements = document.getElementById(`alles`) as HTMLDivElement;
+
+function add() {
+  DATA_BASE.push({
+    firstName: "",
+    lastName: "",
+    age: NaN,
+    mode: PersonMode.EDITING,
+  });
+  const newPerson = createForm(DATA_BASE.length - 1);
+  mainElements.innerHTML = mainElements.innerHTML + newPerson;
+  update();
+}
 
 function createForm(index: number) {
   return `<div class="person">
@@ -32,18 +44,6 @@ function lNameUpdate(value: string, index: number) {
 }
 function ageUpdate(value: string, index: number) {
   DATA_BASE[index].age = parseInt(value);
-}
-
-function add() {
-  DATA_BASE.push({
-    firstName: "",
-    lastName: "",
-    age: NaN,
-    mode: PersonMode.EDITING,
-  });
-  const newPerson = createForm(DATA_BASE.length - 1);
-  mainElements.innerHTML = mainElements.innerHTML + newPerson;
-  update();
 }
 
 function submit(index: number) {
@@ -79,10 +79,10 @@ function update() {
     }
   });
 
-  mainElements.innerHTML = newPeople.join();
+  mainElements.innerHTML = newPeople.join("");
 
   DATA_BASE.forEach((person, index) => {
-    if (person.mode === PersonMode.VIEW) return;
+    if (person.mode === PersonMode.VIEW) return; //po tym jest takie jakby else
     const inpFN = document.getElementById(`fName${index}`) as HTMLInputElement;
     const inpLN = document.getElementById(`lName${index}`) as HTMLInputElement;
     const inpage = document.getElementById(`age${index}`) as HTMLInputElement;
@@ -94,7 +94,6 @@ function update() {
 }
 
 function keyDown(key: string, index: number) {
-  console.log(key);
   if (key === "Enter") {
     submit(index);
   }
